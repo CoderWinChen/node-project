@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script src="./jquery.js"></script>
+</head>
+<body>
+    <h1>登录页</h1>
+    <form action="#">
+        用户名：<input type="text" name="username" id="uname"> <br>
+        密码：  <input type="password" name="password" id="pwd"> <br>
+        <input type="submit" value="登录">
+    </form>
+
+    <script>
+        $(function(){
+            $('form').submit(function(e){
+                e.preventDefault()
+                // 获取用户名和密码，发送请求给后端
+                $.ajax({
+                    type:'POST',
+                    url:'http://localhost/api/login',
+                    data:{
+                        username:$('#uname').val(),
+                        password:$('#pwd').val()
+                    },
+                    success:function(res){
+                        if (res.code === 1){
+                            return alert(res.msg+',用户名或密码错误')
+                        }
+                        
+                        location.href = './index.html'
+                    }
+                })
+
+            })
+        })
+    </script>
+</body>
+</html>

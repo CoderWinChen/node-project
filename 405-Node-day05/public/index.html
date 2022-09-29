@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+</head>
+
+<body>
+    <h1>首页</h1>
+    <button id="logout_btn">退出登录</button>
+    <script>
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'http://localhost/api/getMessage',
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === 1) {
+                        alert('您还未登录，请登录')
+                        location.href = './login.html'
+                    }
+                    else {
+                        alert(`欢迎您:${res.username}`)
+                    }
+                }
+
+            })
+
+
+            $('#logout_btn').on('click',()=>{
+                $.get('http://localhost/api/logout',(res)=>{
+                    if (res.code === 0) {
+                        alert(res.msg)
+                        location.href = './login.html'
+                    }
+                    else {
+                        alert('退出登录失败')
+                    }
+                    
+                })
+            })
+        })
+
+
+
+    </script>
+</body>
+
+</html>

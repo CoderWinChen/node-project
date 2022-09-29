@@ -1,0 +1,12 @@
+{
+  "name": "sztu-tools",
+  "version": "1.0.0",
+  "description": "提供了日期时间格式化，格式化HTML功能",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["dateFormate","htmlEscape","sztu"],
+  "author": "sztu-coderWinChen",
+  "license": "ISC"
+}
